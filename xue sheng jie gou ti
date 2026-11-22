@@ -10,3 +10,24 @@ typedef struct {
     float total;
     float average;
 } Student;
+
+//结构体指针
+void calculateScores(Student *students, int count);
+void sortByTotal(Student *students,int count);
+void passCount(Student *students,int count);
+void printStudents(Student *students,int count);
+
+int main() {
+    int count;
+    printf("请输入学生人数：");
+    if (scanf("%d",&count) !=1 || count<=0) {
+        printf("输入无效，程序退出。\n");
+        return 1;
+    }
+    //使用mallo.c动态申请结构体数组
+    Student *students = (Student *)malloc(count*sizeof(Student));
+    if (students == NULL) {
+        printf("内存运行失败！\n");
+        return 1;
+    }
+}
