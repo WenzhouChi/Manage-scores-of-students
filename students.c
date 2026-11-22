@@ -14,7 +14,7 @@ typedef struct {
 //结构体指针
 void calculateScores(Student *students, int count);
 void sortByTotal(Student *students,int count);
-void passCount(Student *students,int count);
+void countPassed(Student *students,int count);
 void printStudents(Student *students,int count);
 
 int main() {
@@ -45,12 +45,12 @@ int main() {
     sortByTotal(students,count);
 
     //统计及格人数（假设总分及格线为180，及平均分60分及格）
-    int passedCount = countPassed(students,count);
+    countPassed(students,count);
 
     //打印结果
     printf("\n---学生成绩排序结果---\n");
-    printfStudents(students,count);
-    printf("\n及格人数:%d 人\n",passedCount);
+    printStudents(students,count);
+    //printf("\n及格人数:%d 人\n",passedCount);
 
     //释放动态分布的内存
     free(students);
@@ -64,7 +64,7 @@ int i;
 int j;
 void sortByTotal(Student *students,int count) {
     for ( i=0;i<count-1;i++) {
-        for ( j = 0;j<count-1;i++) {
+        for ( j = 0;j<count-1;j++) {
             if (students[j].total < students[j+1].total) {
                 //交换整个结构体
                 Student temp = students[j];
@@ -76,7 +76,7 @@ void sortByTotal(Student *students,int count) {
 }
 
 //统计及格人数的函数
-int countPassed(Student *students,int count) {
+void countPassed(Student *students,int count) {
     int n =0;
     int i;
     for ( i = 0;i<count; i++) {
@@ -85,12 +85,13 @@ int countPassed(Student *students,int count) {
             n++;
         }
     }
-    return n;
+    printf("及格人数:%d 人\n",n);
 }
 
 //打印学生信息的辅助函数
-int i;
-void printfStudents(const Student *students, int count) {
+
+void printStudents( Student *students, int count) {
+    int i;
     for ( i = 0; i<count; i++) {
         printf("学号:%s | 姓名:%s | 成绩:%.1f %.1f %.1f | 总分:%.1f | 平均分:%.2f\n",
         students[i].number,students[i].name,
