@@ -87,3 +87,15 @@ int countPassed(Student *students,int count) {
     }
     return n;
 }
+
+//打印学生信息的辅助函数
+int i;
+void printfStudents(const Student *students, int count) {
+    for ( i = 0; i<count; i++) {
+        printf("学号:%s | 姓名:%s | 成绩:%.1f %.1f %.1f | 总分:%.1f | 平均分:%.2f\n",
+        students[i].number,students[i].name,
+        students[i].scores[0],students[i].scores[1],students[i].scores[2],
+        students[i].total,students[i].average);
+    
+    }
+}
