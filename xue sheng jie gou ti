@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+//学生结构体 
+typedef struct {
+    char number[15];
+    char name[13];
+    float scores[3];
+    float total;
+    float average;
+} Student;
